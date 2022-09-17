@@ -1,0 +1,19 @@
+body{
+    background-color: whitesmoke;
+    font-family: 'Heebo', sans-serif;
+}
+
+.content, .footer {
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+}
+
+.content {
+    background-color: aliceblue;
+}
+
+.footer {
+    background-color: lightgrey;
+    text-align: right;
+}
