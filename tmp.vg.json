@@ -1,0 +1,11 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "data": {
+        "url": "ckan_bdf92691_c6fe_42b9_a0e2_a4cd716fa811.topojson",
+        "format": {"type": "topojson", "feature": "ckan_bdf92691_c6fe_42b9_a0e2_a4cd716fa811"}
+    },
+    "projection": {"type": "equirectangular"},
+    "mark": {"type": "geoshape", "fill": "blue", "stroke": "red"}
+}
