@@ -1,0 +1,16 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "City of Melbourne trees",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "data/city_of_melbourne_municipal_boundary.topojson",
+        "format": {"type": "topojson", "feature": "Municipal Boundary"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightsteelblue", "stroke": "aliceblue"}
+    }
+  ]
+}
