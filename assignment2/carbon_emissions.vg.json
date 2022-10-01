@@ -4,6 +4,19 @@
   "width": 800,
   "height": 400,
   "projection": {"type": "equalEarth"},
+  "params": [
+    {
+      "name": "Select_Year",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 1800,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
   "layer": [
     {
       "data": {"sphere": true},
@@ -16,25 +29,43 @@
       },
       "transform": [
         {
-          "lookup": "properties.ISO_A3_EH",
-          "from": {
-            "data": {
-              "url": "data/owid-co2-data-simple2020.csv"
-            },
-            "key": "iso_code",
-            "fields": ["co2_per_capita", "population"]
-          }
-        },
-        {
-          "calculate": "datum.co2_per_capita", "as": "CO2 per capita (Tonnes)"
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
         }
       ],
       "mark": {
-        "type": "geoshape", "stroke": "lightsteelblue"
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke": "lightsteelblue",
+        "strokeWidth": 0.5
+      },
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+    {
+      "data": {
+        "url": "data/owid-co2-data.csv"
+      },
+      "transform": [
+        {
+          "lookup": "iso_code",
+          "from": {
+            "data": {
+              "url": "data/world_map_countries_110scale_30graticules.topojson",
+              "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+            },
+            "key": "properties.ISO_A3_EH"
+          },
+          "as": "geo"
+        },
+        {"filter": "datum.year == Select_Year"}
+      ],
+      "mark": {
+        "type": "geoshape", "stroke": "lightsteelblue", "strokeWidth": 0.5
       },
       "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
         "color": {
-          "field": "CO2 per capita (Tonnes)",
+          "field": "co2_per_capita",
           "type": "quantitative",
           "scale": {
             "domain": [0, 2.5, 7.5, 15, 25],
@@ -42,9 +73,9 @@
           }
         },
         "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "country", "type": "nominal", "title": "Country"},
           {"field": "population", "type": "quantitative", "title": "Population"},
-          {"field": "CO2 per capita (Tonnes)", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".2f"}
+          {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".2f"}
         ]
       }
     },
