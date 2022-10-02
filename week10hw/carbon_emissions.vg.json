@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Worldwide CO2 Emissions (2020)",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "equalEarth"},
+  "params": [
+    {
+      "name": "Select_Year",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 1800,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "lightsteelblue"}
+    },
+    {
+      "data": {
+        "url": "data/world_map_countries_110scale_30graticules.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke": "lightsteelblue",
+        "strokeWidth": 0.5
+      },
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+    {
+      "data": {
+        "url": "data/owid-co2-data.csv"
+      },
+      "transform": [
+        {
+          "lookup": "iso_code",
+          "from": {
+            "data": {
+              "url": "data/world_map_countries_110scale_30graticules.topojson",
+              "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+            },
+            "key": "properties.ISO_A3_EH"
+          },
+          "as": "geo"
+        },
+        {"filter": "datum.year == Select_Year"}
+      ],
+      "mark": {
+        "type": "geoshape", "stroke": "lightsteelblue", "strokeWidth": 0.5
+      },
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "co2_per_capita",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 2.5, 7.5, 15, 25],
+            "range": ["#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+          }
+        },
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "population", "type": "quantitative", "title": "Population"},
+          {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+    "data": {
+      "url": "data/world_map_countries_110scale_30graticules.topojson",
+      "format": {"type": "topojson", "feature": "ne_50m_graticules_30"}
+    },
+    "mark": {"type": "geoshape", "fill": null, "stroke": "Gainsboro"}
+    }
+  ]
+}
