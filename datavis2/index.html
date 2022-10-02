@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <script src="vega_lite_map.js"></script>
+    <link href="style.css" rel="stylesheet">
+
+    <title>Worldwide CO2 emissions</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1>The disproportianate fight against climate change</h1>
+        To start off with I actually want to just look at the trend of climate change over time
+        Ignoring any of the countries
+        So for example a super simple nonmap idiom showing the rise in CO2 since 1800 that is well annotated
+
+        The storytelling behind this map is literally just going to be that clearly,
+        CO2 is rising and this is a massive issue. 
+        e.g. if we compare to the paris agreement recommendation: we're screwed
+
+        (might want to use a different dataset for this)
+
+        Then we introduce the map: 
+        One of the biggest problems with solving climate change is that some countries
+        are not doing enough...
+
+        Here's a per capita worldwide co2 emissions.
+
+        (pretty cool would actually be having the time periods for both linked but idk if thats actually possible
+        like even if it was just like a line on the stacked area chart to show which year
+        we are at in the world map and how much emissions we had.
+
+        <h3>Worldwide CO2 emissions (per capita)</h3>
+        <div id="carbonmap"></div>
+
+        Have another nonmap idiom of say the top 10 countries with highest co2 emissions per capita
+        and maybe also have a rank chart for top GDP. idk which idiom type to use for that
+        guess what? turns out they're all rich first world countries
+
+        So the richest countries, who have the most avenue to fix climate change,
+        also happen to be the ones that arent doing enough to reduce their co2 emissions
+
+        yes cause and effect, the co2 is often caused because their rich and vice versa
+        but yada yada yada
+
+        <h3>Title of non map idioms/page sections</h3>
+        Storytelling text
+
+        https://vega.github.io/vega-lite/examples/interactive_legend.html
+        this one could be a good example for one for differentiating coal, gas, co2
+        which i think is all in the dataset
+
+        <h3>The worst emitters</h3>
+        CO2 emissions are largely driven by richer countries (at least per capita)
+
+        But in fact even worse than that is the small countries with tiny populations.
+        See: New Caledonia (30.45 Tonnes per capita)
+        Qatar (37.02 Tonnes per capita)
+        Mongolia (26.98 Tonnes per capita)
+        Trinidad and Tobago (25.37 Tonnes per capita)
+
+        These are a special class of countries that have tiny populations but have absolutely massive
+        CO2 contributions per capita due to large mining or oil based economies.
+
+        (Have a good graphic to match with this)
+    </div>
+
+    <br />
+
+    <div class="footer">
+        Created by Andrew Ting (30617634) for FIT3179 Assignment 2
+        <br />
+        Thanks to x for the data <a href="google.com">(Data source)</a>
+    </div>
+</body>
+
+</html>
