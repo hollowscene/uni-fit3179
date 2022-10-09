@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
+  "layer": [{
+    "width": 1000,
+    "height": 400,
+    "data": {"url": "data/owid-co2-data.csv"},
+    "transform": [{"filter": "datum.country=='World'"}],
+    "encoding": {
+      "x": {"field": "year", "type": "temporal", "timeUnit": "year", "title": "year"},
+      "y": {"field": "co2", "type": "quantitative", "title": "co2"},
+      "color": {
+        "condition": {
+          "param": "hover",
+          "field": "country",
+          "type": "nominal",
+          "legend": null
+        },
+        "value": "grey"
+      },
+      "opacity": {
+        "condition": {
+          "param": "hover",
+          "value": 1
+        },
+        "value": 0.2
+      }
+    },
+    "layer": [{
+      "description": "transparent layer to make it easier to trigger selection",
+      "params": [{
+        "name": "hover",
+        "value": [{"symbol": "country"}],
+        "select": {
+          "type": "point",
+          "fields": ["symbol"],
+          "on": "mouseover"
+        }
+      }],
+      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
+    }, {
+      "mark": "line"
+    }, {
+      "description": "actual line and field annotation",
+      "encoding": {
+        "x": {"aggregate": "max", "field": "year"},
+        "y": {"aggregate": {"argmax": "year"}, "field": "co2"}
+      },
+      "layer": [{
+        "mark": {"type": "circle"}
+      }, {
+        "mark": {"type": "text", "align": "left", "dx": 4},
+        "encoding": {"text": {"field":"country", "type": "nominal"}}
+      }]
+    }, {
+      "description": "point tooltip",
+      "params": [{
+        "name": "tooltip_hover",
+        "value": [{"symbol": "country"}],
+        "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+      }],
+      "mark": {"type": "circle", "tooltip": true},
+      "encoding": {
+        "opacity": {
+          "condition": {"test": {"param": "hover", "empty": false}, "value": 1},
+          "value": 0
+        },
+        "size": {
+          "condition": {"test": {"param": "hover", "empty": false}, "value": 48},
+          "value": 100
+        }
+      }
+    }]
+  }, {
+    "description": "2016 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2},
+      "encoding": {
+        "x": {"datum": {"year": 2016}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "mid",
+        "dx": -22,
+        "dy": -180,
+        "x": "width",
+        "text": "2016: Paris Agreement goes into effect"
+      }}
+    ]
+  }, {
+    "description": "2005 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2},
+      "encoding": {
+        "x": {"datum": {"year": 2005}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "mid",
+        "dx": -62,
+        "dy": -160,
+        "x": "width",
+        "text": "2005: Kyoto Protocol goes into effect"
+      }}
+    ]
+  }]
+}

@@ -1,3 +1,14 @@
-body{
-    background-color:white
+body {
+    background-color: aliceblue;
+    font-family: 'Heebo', sans-serif;
+}
+
+#carbonmap {
+    background-color: aliceblue;
+    width: 800px;
+}
+
+#temporallinechart {
+    background-color: aliceblue;
+    width: 1200px;
 }
