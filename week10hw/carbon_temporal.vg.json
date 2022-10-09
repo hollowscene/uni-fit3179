@@ -89,8 +89,9 @@
       "mark": {
         "type": "text",
         "align": "right",
+        "baseline": "top",
         "dx": -22,
-        "dy": -180,
+        "dy": -190,
         "x": "width",
         "text": "2016: Paris Agreement goes into effect"
       }}
@@ -111,8 +112,9 @@
       "mark": {
         "type": "text",
         "align": "right",
+        "baseline": "top",
         "dx": -62,
-        "dy": -160,
+        "dy": -172,
         "x": "width",
         "text": "2005: Kyoto Protocol goes into effect"
       }}
@@ -133,8 +135,9 @@
       "mark": {
         "type": "text",
         "align": "right",
+        "baseline": "top",
         "dx": -280,
-        "dy": 120,
+        "dy": -190,
         "x": "width",
         "text": ["1947: Third industrial revolution", "Huge technological advances"]
       }}
@@ -155,8 +158,9 @@
       "mark": {
         "type": "text",
         "align": "right",
+        "baseline": "top",
         "dx": -562,
-        "dy": 166,
+        "dy": -190,
         "x": "width",
         "text": ["1870: Second industrial revolution", "Rapid scientific discovery"]
       }}
@@ -177,8 +181,9 @@
       "mark": {
         "type": "text",
         "align": "left",
+        "baseline": "top",
         "dx": -954,
-        "dy": 160,
+        "dy": -190,
         "x": "width",
         "text": ["1760: First industrial revolution", "The introduction of", "machine manufacturing"]
       }}
