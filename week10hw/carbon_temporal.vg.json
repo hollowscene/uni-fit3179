@@ -50,9 +50,6 @@
       },
       "layer": [{
         "mark": {"type": "circle"}
-      }, {
-        "mark": {"type": "text", "align": "left", "dx": 4},
-        "encoding": {"text": {"field":"country", "type": "nominal"}}
       }]
     }, {
       "description": "point tooltip",
