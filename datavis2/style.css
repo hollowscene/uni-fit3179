@@ -1,13 +1,59 @@
 body {
     background-color: aliceblue;
     font-family: 'Heebo', sans-serif;
+    padding-top: 48px;
 }
 
+.rowdivider {
+    min-width: 1px;
+    min-height: 1px;
+    height: 64px;
+    float: left;
+}
+
+.column {
+    width: 560px;
+    float: left;
+}
+
+.columndivider {
+    min-height: 1px;
+    width: 60px;
+    float: left;
+}
+
+.twocolumn {
+    width: 1184px;
+    float: left;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* main heading */
+h1 {
+    font-size: 3em;
+    margin: 0;
+    padding-bottom: 4px;
+}
+
+/* Reduce space after chart heading */
+h3 {
+    margin: 0;
+    padding-top: 12px;
+    padding-bottom: 4px;
+}
+
+
 .content {
-    max-width: 600px;
+    min-width: 600px;
     margin: auto;
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 5%;
+    padding-right: 50%;
 }
 
 .content, #temporallinechart {
