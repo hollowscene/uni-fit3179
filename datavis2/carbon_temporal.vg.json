@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
+  "width": "container",
   "height": 400,
-  "width": 600,
   "data": {"url": "data/owid-co2-data.csv"},
-  "transform": [{"filter": "datum.country"}],
+  "transform": [{"filter": "datum.country=='World'"}],
   "encoding": {
     "x": {"field": "year", "type": "temporal", "title": "year"},
     "y": {"field": "co2", "type": "quantitative", "title": "co2"},

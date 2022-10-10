@@ -3,17 +3,29 @@ body {
     font-family: 'Heebo', sans-serif;
 }
 
-.content, .footer {
+.content {
     max-width: 600px;
     margin: auto;
-    padding: 10px;
+    padding-left: 30%;
+    padding-right: 30%;
 }
 
-.content {
+.content, #temporallinechart {
     background-color: aliceblue;
 }
 
 .footer {
     background-color: whitesmoke;
+}
+
+.footertext {
+    max-width: 600px;
     text-align: right;
+    margin: auto;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+#temporallinechart {
+    width: 100%;
 }
