@@ -1,55 +1,189 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
-  "width": "container",
-  "height": 400,
-  "data": {"url": "data/owid-co2-data.csv"},
-  "transform": [{"filter": "datum.country=='World'"}],
-  "encoding": {
-    "x": {"field": "year", "type": "temporal", "title": "year"},
-    "y": {"field": "co2", "type": "quantitative", "title": "co2"},
-    "color": {
-      "condition": {
-        "param": "hover",
-        "field": "country",
-        "type": "nominal",
-        "legend": null
-      },
-      "value": "grey"
-    },
-    "opacity": {
-      "condition": {
-        "param": "hover",
-        "value": 1
-      },
-      "value": 0.2
-    }
-  },
-  "layer": [{
-    "description": "transparent layer to make it easier to trigger selection",
-    "params": [{
-      "name": "hover",
-      "value": [{"symbol": "country"}],
-      "select": {
-        "type": "point",
-        "fields": ["symbol"],
-        "on": "mouseover"
+  "params": [
+    {
+      "name": "Select_Country",
+      "value": "World",
+      "bind": {
+        "input": "select",
+        "options": ["World", "Africa", "Asia", "Europe", "North America", "Oceania", "South America"],
+        "name": "Country/Region: "
       }
-    }],
-    "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
-  }, {
-    "mark": "line"
-  }, {
+    }
+  ],
+  "layer": [{
+    "width": 1000,
+    "height": 400,
+    "data": {"url": "data/owid-co2-data.csv"},
+    "transform": [{"filter": "datum.country==Select_Country"}],
     "encoding": {
-      "x": {"aggregate": "max", "field": "year"},
-      "y": {"aggregate": {"argmax": "year"}, "field": "co2"}
+      "x": {
+        "field": "year", 
+        "type": "temporal", 
+        "timeUnit": "year", 
+        "scale": {"domain": [1750, 2020]},
+        "title": "year"
+      },
+      "y": {"field": "co2", "type": "quantitative", "title": "co2"}
     },
     "layer": [{
-      "mark": {"type": "circle"}
+      "description": "transparent layer to make it easier to trigger selection",
+      "params": [{
+        "name": "hover",
+        "value": [{"symbol": "country"}],
+        "select": {
+          "type": "point",
+          "fields": ["symbol"],
+          "on": "mouseover"
+        }
+      }],
+      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
     }, {
-      "mark": {"type": "text", "align": "left", "dx": 4},
-      "encoding": {"text": {"field":"country", "type": "nominal"}}
+      "description": "actual line",
+      "mark": "line"
+    }, {
+      "description": "end point and annotation tooltip",
+      "encoding": {
+        "x": {"aggregate": "max", "field": "year"},
+        "y": {"aggregate": {"argmax": "year"}, "field": "co2"}
+      },
+      "layer": [{
+        "mark": {"type": "circle"}
+      }]
+    }, {
+      "description": "point tooltip",
+      "params": [{
+        "name": "tooltip_hover",
+        "value": [{"symbol": "country"}],
+        "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+      }],
+      "mark": {"type": "circle", "tooltip": true},
+      "encoding": {
+        "opacity": {
+          "condition": {"test": {"param": "hover", "empty": false}, "value": 1},
+          "value": 0
+        },
+        "size": {
+          "condition": {"test": {"param": "hover", "empty": false}, "value": 48},
+          "value": 48
+        }
+      }
     }]
-  }],
-  "config": {"view": {"stroke": null}}
+  }, {
+    "description": "2016 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2,
+        "opacity": 0.4
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2016}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "dx": -22,
+        "dy": -190,
+        "x": "width",
+        "text": "2016: Paris Agreement goes into effect"
+      }}
+    ]
+  }, {
+    "description": "2005 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2,
+        "opacity": 0.4
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2005}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "dx": -62,
+        "dy": -172,
+        "x": "width",
+        "text": "2005: Kyoto Protocol goes into effect"
+      }}
+    ]
+  }, {
+    "description": "1947 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2,
+        "opacity": 0.4
+      },
+      "encoding": {
+        "x": {"datum": {"year": 1947}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "dx": -280,
+        "dy": -190,
+        "x": "width",
+        "text": ["1947: Third industrial revolution", "Huge technological advances"]
+      }}
+    ]
+  }, {
+    "description": "1870 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2,
+        "opacity": 0.4
+      },
+      "encoding": {
+        "x": {"datum": {"year": 1870}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "dx": -562,
+        "dy": -190,
+        "x": "width",
+        "text": ["1870: Second industrial revolution", "Rapid scientific discovery"]
+      }}
+    ]
+  }, {
+    "description": "1760 annotation",
+    "data": {"values": [{}]},
+    "layer": [{
+      "mark": {
+        "type": "rule", 
+        "strokeDash": [2, 2], 
+        "size": 2,
+        "opacity": 0.4
+      },
+      "encoding": {
+        "x": {"datum": {"year": 1760}}
+      }}, {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": -954,
+        "dy": -190,
+        "x": "width",
+        "text": ["1760: First industrial revolution", "The introduction of", "machine manufacturing"]
+      }}
+    ]
+  }]
 }
