@@ -21,8 +21,44 @@
 </head>
 
 <body>
-    <div class="content">
-        <h1>The disproportianate fight against climate change</h1>
+    <section id="title">
+        <h1 class="title">The disproportionate fight against climate change</h1>
+    </section>
+
+    <section id="main1">
+        <div class="row">
+            <div class="leftcolumn">
+                To start off with I actually want to just look at the trend of climate change over time
+                Ignoring any of the countries
+                So for example a super simple nonmap idiom showing the rise in CO2 since 1800 that is well annotated
+            
+                The storytelling behind this map is literally just going to be that clearly,
+                CO2 is rising and this is a massive issue. 
+                e.g. if we compare to the paris agreement recommendation: we're screwed
+            
+                (might want to use a different dataset for this)
+            </div>
+            <div class="rightcolumn">
+                Then we introduce the map: 
+                One of the biggest problems with solving climate change is that some countries
+                are not doing enough...
+            
+                Here's a per capita worldwide co2 emissions.
+            
+                (pretty cool would actually be having the time periods for both linked but idk if thats actually possible
+                like even if it was just like a line on the stacked area chart to show which year
+                we are at in the world map and how much emissions we had.
+            </div>
+        </div>
+
+        <div class="row">
+            <h3 class="subheading">GLOBAL CARBON EMISSIONS: EXPONENTIAL RISE</h3>
+            <div id="temporallinechart"></div>
+        </div>
+    </section>
+
+    <section id="main2">
+        <h1 class="heading">Some subheading</h1>
         To start off with I actually want to just look at the trend of climate change over time
         Ignoring any of the countries
         So for example a super simple nonmap idiom showing the rise in CO2 since 1800 that is well annotated
@@ -42,9 +78,15 @@
         (pretty cool would actually be having the time periods for both linked but idk if thats actually possible
         like even if it was just like a line on the stacked area chart to show which year
         we are at in the world map and how much emissions we had.
+    </section>
 
-        <h3>Worldwide CO2 emissions (per capita)</h3>
+    <section id="main3">
+        <h1 class="heading">Some Other Subheading (Try to use title case)</h1>
+        <h3 class="subheading">WORLDWIDE CO2 EMISSIONS</h3>
         <div id="carbonmap"></div>
+
+        Possible idea: Use the map as a filter for later charts. i.e. pick a country, all other countries go grey, and it filters
+        other charts to just that country
 
         Try throwing on a Dropdown for the different metrics (i.e. per capita, per GDP etc)
         Or a radio button instead of a dropdown if you want
@@ -62,7 +104,6 @@
         but yada yada yada
 
         <h3>The rapid rise in global carbon emissions</h3>
-
         <div id="temporallinechart"></div>
 
         https://vega.github.io/vega-lite/examples/interactive_legend.html
@@ -83,18 +124,18 @@
 
         (Have a good graphic to match with this)
     </div>
+    </section>
 
-    <br />
-
-    <div class="footer">
-        <div class="footertext">
+    <section id="footer">
+        <div>
             <br />
             Created by Andrew Ting (30617634) for FIT3179 Assignment 2
             <br />
-            Thanks to x for the data <a href="google.com">(Data source)</a>
+            Many thanks to Our World in Data for the data <a href="https://ourworldindata.org/co2-dataset-sources">(source)</a>
             <br />
+            and probably more stuff in the footer here
         </div>
-    </div>
+    </section>
 </body>
 
 </html>

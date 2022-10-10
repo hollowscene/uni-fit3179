@@ -1,31 +1,85 @@
 body {
+    margin: 0px;
+}
+
+/* SECTIONS */
+section {
+    background-color: white;
+    color: black;
+    font-family: Helvetica Neue LT Std, serif;
+    font-size: 1em;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 28%;
+    padding-right: 28%;
+    text-align: left;
+}
+
+section#title {
     background-color: aliceblue;
     font-family: 'Heebo', sans-serif;
+    text-align: center;
+    padding-top: 64px;
 }
 
-.content {
-    max-width: 600px;
-    margin: auto;
-    padding-left: 30%;
-    padding-right: 30%;
+section#main1 {
+    background-color: white;
 }
 
-.content, #temporallinechart {
+section#main2 {
     background-color: aliceblue;
 }
 
-.footer {
+section#main3 {
+    background-color: white;
+}
+
+section#footer {
     background-color: whitesmoke;
-}
-
-.footertext {
-    max-width: 600px;
     text-align: right;
-    margin: auto;
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-top: 120px;
+    padding-bottom: 32px;
 }
 
-#temporallinechart {
+/* TWO COLUMN LAYOUT */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+div.leftcolumn {
+    width: 47%;
+    float: left;
+}
+
+div.rightcolumn {
+    width: 47%;
+    float: right;
+}
+
+/* HEADINGS */
+h1.title {
+    font-size: 3em;
+    margin: 0;
+}
+
+h1.heading {
+    font-size: 2em;
+    margin: 0;
+}
+
+h3.subheading {
+    margin: 0;
+    padding-top: 12px;
+    padding-bottom: 4px;
+}
+
+/* CHARTS */
+div#temporallinechart {
+    width: 100%;
+}
+
+div#carbonmap {
     width: 100%;
 }
