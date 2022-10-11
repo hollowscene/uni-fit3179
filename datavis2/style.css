@@ -1,5 +1,7 @@
 body {
-    margin: 0px;
+    margin-left: 520px;
+    margin-right: 520px;
+    background-color: aliceblue;
 }
 
 /* SECTIONS */
@@ -10,8 +12,9 @@ section {
     font-size: 1em;
     padding-top: 32px;
     padding-bottom: 32px;
-    padding-left: 28%;
-    padding-right: 28%;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 960px;
     text-align: left;
 }
 
@@ -34,27 +37,31 @@ section#main3 {
     background-color: white;
 }
 
+section#main4 {
+    background-color: aliceblue;
+}
+
 section#footer {
     background-color: whitesmoke;
     text-align: right;
     padding-top: 120px;
-    padding-bottom: 32px;
+    padding-bottom: 0px;
 }
 
 /* TWO COLUMN LAYOUT */
-.row:after {
+div.row:after {
     content: "";
     display: table;
     clear: both;
 }
 
 div.leftcolumn {
-    width: 47%;
+    width: 440px;
     float: left;
 }
 
 div.rightcolumn {
-    width: 47%;
+    width: 440px;
     float: right;
 }
 
@@ -77,9 +84,9 @@ h3.subheading {
 
 /* CHARTS */
 div#temporallinechart {
-    width: 100%;
+    width: 960px;
 }
 
 div#carbonmap {
-    width: 100%;
+    width: 960px;
 }
