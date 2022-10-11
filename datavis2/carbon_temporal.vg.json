@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
+  "width": 960,
+  "height": 400,
   "params": [
     {
       "name": "Select_Country",
@@ -13,8 +15,6 @@
     }
   ],
   "layer": [{
-    "width": 1000,
-    "height": 400,
     "data": {"url": "data/owid-co2-data.csv"},
     "transform": [{"filter": "datum.country==Select_Country"}],
     "encoding": {

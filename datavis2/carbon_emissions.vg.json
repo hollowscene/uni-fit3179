@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Worldwide CO2 Emissions (2020)",
-  "width": "container",
+  "width": 960,
   "height": 400,
   "projection": {"type": "equalEarth"},
   "params": [
