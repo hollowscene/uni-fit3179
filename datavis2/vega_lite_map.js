@@ -7,3 +7,8 @@ var vg_2 = "carbon_temporal.vg.json";
 vegaEmbed("#temporallinechart", vg_2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
+
+var vg_3 = "carbon_worst_emitters.vg.json";
+vegaEmbed("#topkchart", vg_3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);

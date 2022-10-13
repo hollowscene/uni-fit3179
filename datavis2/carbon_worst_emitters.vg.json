@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 worst emitting countries (per capita)",
+
+  "width": 960,
+  "height": 400,
+  "data": {"url": "data/owid-co2-data.csv"},
+  "transform": [{
+    "filter": "datum.year == Select_Year & datum.iso_code != ''"
+  }],
+
+  "params": [
+    {
+      "name": "Select_Year",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 1800,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+
+  "layer": [{
+    "transform": [
+      {
+        "window": [{
+          "op": "rank",
+          "as": "rank"
+        }],
+        "sort": [{ "field": "co2_per_capita", "order": "descending" }]
+      }, {
+        "filter": "datum.rank <= 10"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+          "field": "co2_per_capita",
+          "type": "quantitative"
+      },
+      "y": {
+          "field": "country",
+          "type": "nominal",
+          "sort": {"field": "co2_per_capita", "op": "sum", "order": "descending"}
+      }
+    }
+  }],
+  
+  "config": {
+    "background": "aliceblue"
+  }
+}
