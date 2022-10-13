@@ -2,6 +2,8 @@ body {
     margin-left: 520px;
     margin-right: 520px;
     background-color: aliceblue;
+    padding-top: 32px;
+    padding-bottom: 64px;
 }
 
 /* SECTIONS */
@@ -9,7 +11,7 @@ section {
     background-color: white;
     color: black;
     font-family: Helvetica Neue LT Std, serif;
-    font-size: 1em;
+    font-size: 1.1em;
     padding-top: 32px;
     padding-bottom: 32px;
     padding-left: 40px;
@@ -21,8 +23,7 @@ section {
 section#title {
     background-color: aliceblue;
     font-family: 'Heebo', sans-serif;
-    text-align: center;
-    padding-top: 64px;
+    text-align: left;
 }
 
 section#main1 {
@@ -37,15 +38,10 @@ section#main3 {
     background-color: white;
 }
 
-section#main4 {
-    background-color: aliceblue;
-}
-
 section#footer {
-    background-color: whitesmoke;
+    background-color: lightgrey;
     text-align: right;
     padding-top: 120px;
-    padding-bottom: 0px;
 }
 
 /* TWO COLUMN LAYOUT */
@@ -66,9 +62,15 @@ div.rightcolumn {
 }
 
 /* HEADINGS */
-h1.title {
-    font-size: 3em;
+h1.title1 {
+    font-size: 2.3em;
     margin: 0;
+}
+
+h1.title2 {
+    font-size: 5em;
+    margin: 0;
+    line-height: 100px;
 }
 
 h1.heading {
@@ -88,5 +90,9 @@ div#temporallinechart {
 }
 
 div#carbonmap {
+    width: 960px;
+}
+
+div#topkchart {
     width: 960px;
 }
