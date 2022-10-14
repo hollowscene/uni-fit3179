@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waterfall chart",
+  "width": 900,
+  "height": 450,
+  "padding": 5,
+  "data": {"url": "data/owid-co2-data.csv"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "nominal"
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "co2_growth_abs",
+      "type": "quantitative",
+      "axis": {
+        "title": "",
+        "grid": false
+      }
+    }
+  },
+  "transform": [{
+    "calculate": "datum.year == '2020' ? 'total' : co2_growth_abs > 0 ? 'increase' : co2_growth_abs <= 0 ? 'decrease'", 
+    "as": "cat"
+  }],
+  "layer": [{
+    "mark": "bar",
+    "encoding": {
+      "color": {
+        "field": "cat",
+        "type": "ordinal",
+        "legend": {"title": ""},
+        "scale": {
+          "domain": ["total","increase","decrease"],
+          "range": ["#4FC3F7","#B2FF59","#FF5252"]
+        }
+      }
+    }}, 
+    {"mark": "text",
+      "encoding": {
+        "y": {
+          "field": "co2", 
+          "type": "quantitative"          
+        },       
+        "text": {
+          "condition": {"test": "datum['cat'] == 'total'", "field": "co2"},
+          "field": "co2_growth_abs", "type": "nominal"
+        },
+        "color": {
+          "condition": {"test": "datum['cat'] != 'increase'", "value": "white"},
+          "value": "#1B5E20"
+        }
+      }
+    }
+  ],
+  "config": {
+    "text": {
+      "baseline": "bottom",
+      "align": "center",
+      "fontWeight": "bold"      
+    }
+  }   
+}
