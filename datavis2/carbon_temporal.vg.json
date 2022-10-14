@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "CO2 Emissions by Country",
   "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
-  "width": 960,
+  "width": "container",
   "height": 400,
   "params": [
     {
@@ -26,7 +26,11 @@
         "scale": {"domain": [1750, 2020]},
         "title": "year"
       },
-      "y": {"field": "co2", "type": "quantitative", "title": "co2"}
+      "y": {
+        "field": "co2", 
+        "type": "quantitative", 
+        "title": "co2"
+      }
     },
     "layer": [{
       "description": "transparent layer to make it easier to trigger selection",
@@ -91,7 +95,7 @@
         "dx": -22,
         "dy": -190,
         "x": "width",
-        "text": "2016: Paris Agreement goes into effect"
+        "text": ["2016: Paris Agreement", "goes into effect"]
       }}
     ]
   }, {
@@ -111,10 +115,10 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -62,
-        "dy": -172,
+        "dx": -60,
+        "dy": -152,
         "x": "width",
-        "text": "2005: Kyoto Protocol goes into effect"
+        "text": ["2005: Kyoto Protocol", "goes into effect"]
       }}
     ]
   }, {
@@ -134,10 +138,10 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -280,
+        "dx": -240,
         "dy": -190,
         "x": "width",
-        "text": ["1947: Third industrial revolution", "Huge technological advances"]
+        "text": ["1947: Third industrial", "revolution - Huge", "technological advances"]
       }}
     ]
   }, {
@@ -157,10 +161,10 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -562,
+        "dx": -482,
         "dy": -190,
         "x": "width",
-        "text": ["1870: Second industrial revolution", "Rapid scientific discovery"]
+        "text": ["1870: Second", "industrial revolution - ", "Rapid scientific discovery"]
       }}
     ]
   }, {
@@ -180,10 +184,10 @@
         "type": "text",
         "align": "left",
         "baseline": "top",
-        "dx": -954,
+        "dx": -810,
         "dy": -190,
         "x": "width",
-        "text": ["1760: First industrial revolution", "The introduction of", "machine manufacturing"]
+        "text": ["1760: First industrial", " revolution - The introduction", "of machine manufacturing"]
       }}
     ]
   }]
