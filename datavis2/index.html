@@ -17,97 +17,137 @@
     <script src="vega_lite_map.js"></script>
     <link href="style.css" rel="stylesheet">
 
-    <title>Worldwide CO2 emissions</title>
+    <title>Inequality of Climate Change</title>
 </head>
 
 <body>
     <section id="title">
         <h1 class="title1">the disproportionate fight against</h1>
-        <h1 class="title2">Climate Change</h1>
+        <h1 class="title2">climate change</h1>
     </section>
 
     <section id="main1">
         <div class="row">
+            <h3 class="subheading">GLOBAL CARBON EMISSIONS: EXPONENTIAL RISE</h3>
             <div class="leftcolumn">
-                To start off with I actually want to just look at the trend of climate change over time
-                Ignoring any of the countries
-                So for example a super simple nonmap idiom showing the rise in CO2 since 1800 that is well annotated
-            
-                The storytelling behind this map is literally just going to be that clearly,
-                CO2 is rising and this is a massive issue. 
-                e.g. if we compare to the paris agreement recommendation: we're screwed
-            
-                (might want to use a different dataset for this)
+                Overall trend of climate change over time: Increasing exponentially.
+                Aside from Europe, every continent is experiencing an <span style="color: royalblue"> exponential increase in carbon emissions</span>.
+
+                Despite recent actions of the Kyoto Protocol and the Paris Agreement, carbon emissions are still growing out of control.
             </div>
             <div class="rightcolumn">
-                Then we introduce the map: 
-                One of the biggest problems with solving climate change is that some countries
-                are not doing enough...
-            
-                Here's a per capita worldwide co2 emissions.
-            
-                (pretty cool would actually be having the time periods for both linked but idk if thats actually possible
-                like even if it was just like a line on the stacked area chart to show which year
-                we are at in the world map and how much emissions we had.
+                Use the dropdown to filter by the general trend of carbon emissions per capita per continent (try to make this a hover instead).
+                Why is Europe the only one showing a non-increasing trend? Several factors... e.g. actual impactful and practical policy around fighting climate change.
             </div>
         </div>
 
         <div class="row">
-            <h3 class="subheading">GLOBAL CARBON EMISSIONS: EXPONENTIAL RISE</h3>
             <div id="temporallinechart"></div>
+        </div>
+
+        <div class="row">
+            <br />
+            <h3 class="subheading">WORLDWIDE CO2 EMISSIONS</h3>
+            <div class="leftcolumn">
+                On a global scale there is still a clear disparity between the carbon emissions produced by different countries.
+                This map shows the per capita CO2 emissions produced by every country. Use the slider to adjust the year being shown.
+            </div>
+            <div class="rightcolumn">
+                To do: Add dropdown/radio selector for the different metrics (i.e. per capita, per GDP etc)
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="carbonmap"></div>
         </div>
     </section>
 
+    <section id="rowdivider"></section>
+
     <section id="main2">
-        <h1 class="heading">Some subheading</h1>
-        Lorem ipsum
-    </section>
+        <h1 class="heading">Inequality And Negligence: Whose Problem Is It?</h1>
+        <div class="row">
+            <div class="leftcolumn">
+            Whose fight is it? There's no simple answer but its clear that more needs to be done, especially by more wealthy countries.
+            </div>
 
-    <section id="main3">
-        <h1 class="heading">Some Other Subheading (Try to use title case)</h1>
-        <h3 class="subheading">WORLDWIDE CO2 EMISSIONS</h3>
-        <div id="carbonmap"></div>
+            <div class="rightcolumn">
+            The richest countries, who have the most avenue to fix climate change, and are least likely to be impacted by it,
+            also happen to be the ones that aren't doing enough to reduce their co2 emissions...
+            </div>
+        </div>
 
-            Possible idea: Use the map as a filter for later charts. i.e. pick a country, all other countries go grey, and it filters
-            other charts to just that country
+        <h3 class="subheading">INCOME INEQUALITY</h3>
+        <div class="row">
+            <div class="leftcolumn">
+            The countries most affected by climate change are often the poorest without the resources to withstand the ramifications.
+            </div>
 
-            Try throwing on a Dropdown for the different metrics (i.e. per capita, per GDP etc)
-            Or a radio button instead of a dropdown if you want
+            <div class="rightcolumn">
+            Dataset already has aggregated high/high-middle/low-middle/low income countries
+            insert chart
+            </div>
+        </div>
 
-            <br />
-
-            Have another nonmap idiom of say the top 10 countries with highest co2 emissions per capita
-            and maybe also have a rank chart for top GDP. idk which idiom type to use for that
-            guess what? turns out they're all rich first world countries
-
-            So the richest countries, who have the most avenue to fix climate change,
-            also happen to be the ones that arent doing enough to reduce their co2 emissions
-
-            yes cause and effect, the co2 is often caused because their rich and vice versa
-            but yada yada yada
-
-            <h3>The rapid rise in global carbon emissions</h3>
-            <div id="temporallinechart"></div>
-
-            https://vega.github.io/vega-lite/examples/interactive_legend.html
-            this one could be a good example for one for differentiating coal, gas, co2
-            which i think is all in the dataset
-
-            <h3>The worst emitters</h3>
-            <div id="topkchart"></div>
+        <h3 class="subheading">THE WORST EMITTERS</h3>
+        <div id="topkchart"></div>
+        <div class="row">
+            <div class="leftcolumn">
             CO2 emissions are largely driven by richer countries (at least per capita)
 
-            But in fact even worse than that is the small countries with tiny populations.
-            See: New Caledonia (30.45 Tonnes per capita)
+            But in fact even worse than these countries is a small subset of countries with tiny populations but massive carbon emissions such as:
+
+            New Caledonia (30.45 Tonnes per capita)
             Qatar (37.02 Tonnes per capita)
             Mongolia (26.98 Tonnes per capita)
             Trinidad and Tobago (25.37 Tonnes per capita)
+            </div>
 
-            These are a special class of countries that have tiny populations but have absolutely massive
-            CO2 contributions per capita due to large mining or oil based economies.
-
-            (Have a good graphic to match with this)
+            <div class="rightcolumn">
+            These are a distinct class of countries that have tiny populations but have absolutely massive
+            CO2 contributions per capita due to large mining or oil based economies and reducing the carbon emissions in these countries
+            should be a priority.
+            </div>
         </div>
+    </section>
+
+    <section id="rowdivider"></section>
+
+    <section id="main3">
+        <h1 class="heading">Is It Too Late? What Can I Do?</h1>
+        <div class="row">
+            <div class="leftcolumn">
+            Concluding section. Firstly identify where the problem is driven the most.
+
+            The unfortunate reality is that climate change is going to affect everyone. 
+            </div>
+
+            <div class="rightcolumn">
+            https://vega.github.io/vega-lite/examples/interactive_legend.html
+            this one could be a good example for one for differentiating coal, gas, co2
+            which i think is all in the dataset
+            </div>
+        </div>
+
+        <h3 class="subheading">FOSSIL FUELS</h3>
+        <div class="row">
+            <div class="leftcolumn">
+            Color guide e.g. <span style="color: rosybrown">Coal</span>, <span style="color: grey">Gas</span>, <span style="color: darkred">CO2</span>
+            </div>
+
+            <div class="rightcolumn">
+            We've known the science for so long. The cause is fossil fuels. But rich countries are not willing to adapt
+            e.g. see this chart that shows rich countries are still producing massive amounts of fossil fuels and not slowing down
+            </div>
+        </div>
+
+        <div id="groupedbarchart"></div>
+
+        <h3 class="subheading">FINAL WORDS</h3>
+        The most important thing about the fight against climate change is being knowledgeable about the science around it.
+        Research yourself. Share with those you know. Then potentially go out and try to help yourself by contributing to local community politics.
+        Blah blah climate town stuff.
+
     </section>
 
     <section id="footer">
