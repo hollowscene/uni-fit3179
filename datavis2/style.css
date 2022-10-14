@@ -10,8 +10,8 @@ body {
 section {
     background-color: white;
     color: black;
-    font-family: Helvetica Neue LT Std, serif;
-    font-size: 1.1em;
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.05em;
     padding-top: 32px;
     padding-bottom: 32px;
     padding-left: 40px;
@@ -31,11 +31,11 @@ section#main1 {
 }
 
 section#main2 {
-    background-color: aliceblue;
+    background-color: white;
 }
 
-section#main3 {
-    background-color: white;
+section#rowdivider {
+    background-color: aliceblue;
 }
 
 section#footer {
@@ -65,20 +65,23 @@ div.rightcolumn {
 h1.title1 {
     font-size: 2.3em;
     margin: 0;
+    padding-left: 4px;
 }
 
 h1.title2 {
-    font-size: 5em;
+    font-size: 5.5em;
     margin: 0;
     line-height: 100px;
 }
 
 h1.heading {
+    font-family: 'Heebo', sans-serif;
     font-size: 2em;
     margin: 0;
 }
 
 h3.subheading {
+    font-family: 'Heebo', sans-serif;
     margin: 0;
     padding-top: 12px;
     padding-bottom: 4px;
@@ -87,6 +90,7 @@ h3.subheading {
 /* CHARTS */
 div#temporallinechart {
     width: 960px;
+    padding-top: 30px;
 }
 
 div#carbonmap {
@@ -94,5 +98,9 @@ div#carbonmap {
 }
 
 div#topkchart {
+    width: 960px;
+}
+
+div#groupedbarchart {
     width: 960px;
 }

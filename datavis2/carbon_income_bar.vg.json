@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "data/owid-co2-data.csv"},
+  "description": "A grouped bar chart using color to encode age bins. Each cell represents a state in the US.",
+  
+  "width": 175,
+  "height": 300,
+
+  "params": [
+    {
+      "name": "Select_Year",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 1800,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+
+  "transform": [{
+    "filter": {
+      "field": "country", 
+      "oneOf": ["Low-income countries", "Lower-middle-income countries", "Upper-middle-income countries", "High-income countries"]
+    }
+  }, {
+    "filter": "datum.year == Select_Year"
+  }, {
+    "fold": ["coal_co2", "gas_co2", "oil_co2", "cement_co2", "flaring_co2", "other_co2"],
+    "as": ["key", "co2_amount"]
+   }],
+
+  "mark": "bar",
+  "encoding": {
+    "column": {"field": "country", "type": "nominal", "title":""},
+    "y": {
+      "aggregate": "sum",
+      "field": "co2_amount",
+      "type": "quantitative",
+      "axis": {
+        "title": "",
+        "grid": false
+      }
+    },
+    "x": {
+      "field": "key",
+      "type": "nominal",
+      "axis": null,
+      "sort": "descending"
+    },
+    "color": {
+      "field": "key",
+      "type": "ordinal",
+      "scale": {
+        "range": [
+          "#98abc5",
+          "#8a89a6",
+          "#7b6888",
+          "#6b486b",
+          "#a05d56",
+          "#d0743c",
+          "#ff8c00"
+        ]
+      },
+      "legend": {
+        "title": "Carbon emission source"
+      }
+    }
+  }
+}
