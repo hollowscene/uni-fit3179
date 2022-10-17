@@ -32,7 +32,7 @@
     "as": ["key", "co2_amount"]
    }],
 
-  "mark": "bar",
+  "mark": {"type": "bar", "tooltip": true},
   "encoding": {
     "column": {"field": "country", "type": "nominal", "title":""},
     "y": {

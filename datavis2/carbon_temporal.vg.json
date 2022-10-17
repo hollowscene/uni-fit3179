@@ -4,6 +4,14 @@
   "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
   "width": "container",
   "height": 400,
+
+  "data": {"url": "data/owid-co2-data.csv"},
+  "transform": [{    
+    "filter": {
+      "field": "country", 
+      "oneOf": ["World", "Africa", "Asia", "Europe", "North America", "Oceania", "South America"]
+  }}],
+
   "params": [
     {
       "name": "Select_Country",
@@ -15,9 +23,8 @@
       }
     }
   ],
+
   "layer": [{
-    "data": {"url": "data/owid-co2-data.csv"},
-    "transform": [{"filter": "datum.country==Select_Country"}],
     "encoding": {
       "x": {
         "field": "year", 
@@ -30,7 +37,8 @@
         "field": "co2", 
         "type": "quantitative", 
         "title": "co2"
-      }
+      },
+      "detail": {"field": "country", "type": "nominal"}
     },
     "layer": [{
       "description": "transparent layer to make it easier to trigger selection",
@@ -55,6 +63,9 @@
       },
       "layer": [{
         "mark": {"type": "circle"}
+      }, {
+        "mark": {"type": "text", "align": "left", "dx": 4},
+        "encoding": {"text": {"field": "country", "type": "nominal"}}
       }]
     }, {
       "description": "point tooltip",
@@ -63,7 +74,7 @@
         "value": [{"symbol": "country"}],
         "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
       }],
-      "mark": {"type": "circle", "tooltip": true},
+      "mark": {"type": "circle", "tooltip": true}, 
       "encoding": {
         "opacity": {
           "condition": {"test": {"param": "hover", "empty": false}, "value": 1},
