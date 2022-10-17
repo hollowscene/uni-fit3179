@@ -1,0 +1,23 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple radial chart with embedded data.",
+    "title": "Carbon Emission Share by Income (2020)",
+
+    "data": {"url": "data/owid-co2-data.csv"},
+    "transform": [{
+        "filter": {
+          "field": "country", 
+          "oneOf": ["Low-income countries", "Lower-middle-income countries", "Upper-middle-income countries", "High-income countries"]
+        }
+    }, {
+        "filter": "datum.year == 2020"
+    }],
+
+    "mark": {"type": "arc", "innerRadius": 150, "stroke": "#fff", "tooltip": true},
+    "encoding": {
+        "theta": {"field": "co2", "type": "quantitative", "stack": true},
+        "radius": {"field": "co2", "scale": {"type": "sqrt", "zero": true, "rangeMin": 10}, "sort": "descending"},
+        "color": {"field": "country", "type": "nominal", "legend": true},
+        "detail": {"field": "country", "type": "nominal"}
+    }
+}

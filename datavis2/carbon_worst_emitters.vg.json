@@ -7,6 +7,14 @@
   "data": {"url": "data/owid-co2-data.csv"},
   "transform": [{
     "filter": "datum.year == Select_Year & datum.iso_code != ''"
+  }, {
+    "window": [{
+      "op": "rank",
+      "as": "rank"
+    }],
+    "sort": [{ "field": "co2_per_capita", "order": "descending" }]
+  }, {
+    "filter": "datum.rank <= 10"
   }],
 
   "params": [
@@ -24,17 +32,6 @@
   ],
 
   "layer": [{
-    "transform": [
-      {
-        "window": [{
-          "op": "rank",
-          "as": "rank"
-        }],
-        "sort": [{ "field": "co2_per_capita", "order": "descending" }]
-      }, {
-        "filter": "datum.rank <= 10"
-      }
-    ],
     "mark": {"type": "bar", "tooltip": true},
     "encoding": {
       "x": {
@@ -45,7 +42,14 @@
           "field": "country",
           "type": "nominal",
           "sort": {"field": "co2_per_capita", "op": "sum", "order": "descending"}
-      }
+      },
+      "color": {
+        "condition": [{
+          "test": "datum.rank == 1", 
+          "value": "#d95f02"
+        }]
+      },
+      "detail": {"field": "rank", "type": "ordinal"}
     }
   }],
   

@@ -31,22 +31,18 @@
             <h3 class="subheading">GLOBAL CARBON EMISSIONS: EXPONENTIAL RISE</h3>
             <div class="leftcolumn">
                 Climate change is one of the most pressing issues of the current century. 
-                Rapidly rising temperatures, increased frequency of natural disasters and ...., 
-                its clear that the effects of climate change will severely damage the planet and have a huge impact on .
-
-                Aside from Europe, every continent is experiencing an <span style="color: royalblue"> exponential increase in carbon emissions</span>.
-
-                Despite recent actions of the Kyoto Protocol and the Paris Agreement, carbon emissions are still growing out of control.
+                Key findings by the United Nations have shown that human activities, 
+                primarily the burning of fossil fuels, have been the main driver for climate change.
+                Climate change affects everyone. 
+                Rapidly rising temperatures, increased frequency of natural disasters and 
+                disruption to natural fauna and flora pose dire risks for countries across the world.
             </div>
             <div class="rightcolumn">
-                One of the biggest contributors to the rapid rate of climate change is the increasingly dangerous amounts of carbon emissions being produced worldwide.
-
-                From the chart below we can see that the carbon emissions being produced on a yearly basis have been exponentially rising for the entirety 
-                of the last century with only minor signs of a possible dip in more recent years.
-
-                Europe is the only continent without an exponential rise in carbon emissions over the last few years
-
-                Why is Europe the only one showing a non-increasing trend? Several factors... e.g. actual impactful and practical policy around fighting climate change.
+                And yet, despite all this warning, global carbon emissions are still on the rise.
+                The chart below shows that yearly carbon emissions are beginning to slow down in 
+                <span style="color: #72b7b2">North America</span> and <span style="color: #e45756">Europe</span>
+                but these gains are being offset by increases of carbon emissions in <span style="color: #f58518">Asia</span>
+                predominantly over the last three decades.
             </div>
         </div>
 
@@ -56,17 +52,19 @@
 
         <div class="row">
             <br />
-            <h3 class="subheading">WORLDWIDE CO2 EMISSIONS</h3>
+            <h3 class="subheading">CARBON EMISSIONS PER CAPITA</h3>
             <div class="leftcolumn">
-                On a global scale there is still a clear disparity between the carbon emissions produced by different countries.
-                This map shows the per capita CO2 emissions produced by every country. Use the slider to adjust the year being shown.
+                But, looking at absolute carbon emissions doesn't tell the entire story.
+                It's only natural that more populated nations need to produce more carbon emissions.
+                Instead, a fairer way to analyse global carbon emissions is to look at the per capita emissions.
             </div>
             <div class="rightcolumn">
-                To do: Add dropdown/radio selector for the different metrics (i.e. per capita, per GDP etc)
-
-                Now there's a clear trend... richer countries often produce higher co2 per capita
+                On a global scale there is still a clear disparity between the carbon emissions produced by different countries.
+                This map below shows the per capita CO2 emissions produced by every country. Use the slider to adjust the year being shown.
             </div>
         </div>
+
+        <br />
 
         <div class="row">
             <div id="carbonmap"></div>
@@ -80,96 +78,115 @@
         <h3 class="subheading">INCOME INEQUALITY</h3>
         <div class="row">
             <div class="leftcolumn">
-            The countries most affected by climate change are often the poorest without the resources to withstand the consequences that climate change will bring.
+                One glaring pattern from looking at per capita carbon emissions is that the countries emitting more are often
+                first-world countries.
+                <br />
+                <br />
+                If we group countries into income brackets its clear to see that poorer countries contribute substantially less carbon emissions
+                to the planet than richer countries. This is a looming ethical issue as the biggest problem is that poorer countries
+                will find it harder for themselves to prevent and recover from the consequences of climate change.
             </div>
 
             <div class="rightcolumn">
-            Dataset already has aggregated high/high-middle/low-middle/low income countries
-            insert chart
+                <div id="radialchart"></div>
             </div>
         </div>
+
+        <br />
 
         <h3 class="subheading">THE WORST EMITTERS</h3>
         <div class="row">
             <div class="leftcolumn">
-            CO2 emissions are largely driven by richer countries (at least per capita)
-
-            But in fact even worse than these countries is a small subset of countries with tiny populations but massive carbon emissions such as:
-
-            New Caledonia (30.45 Tonnes per capita)
-            Qatar (37.02 Tonnes per capita)
-            Mongolia (26.98 Tonnes per capita)
-            Trinidad and Tobago (25.37 Tonnes per capita)
+                <div id="topkchart"></div>
             </div>
 
             <div class="rightcolumn">
-            These are a distinct class of countries that have tiny populations but have absolutely massive
-            CO2 contributions per capita due to large mining or oil based economies and reducing the carbon emissions in these countries
-            should be a priority.
+                And among these rich countries is an even more glaring issue. 
+                So we know that CO2 emissions are largely driven by richer countries. 
+                Even worse than that, the top emitters of 2020 were a small subset 
+                of countries with tiny populations but massive carbon emissions.
 
-            Try to see if you can colour the worst emitter red and bold their name
+                    New Caledonia (30.45 Tonnes per capita)
+                    Qatar (37.02 Tonnes per capita)
+                    Mongolia (26.98 Tonnes per capita)
+                    Trinidad and Tobago (25.37 Tonnes per capita)
+
+                <br />
+                <br />
+
+                These are a distinct class of countries that have tiny populations but have absolutely massive
+                CO2 contributions per capita due to large mining or oil based economies and reducing the carbon emissions in these countries
+                should be a priority.
+
+                Try to see if you can colour the worst emitter red and bold their name
             </div>
         </div>
-        <div id="topkchart"></div>
+
+        <br />
+
+        <h3 class="subheading">ONE FINAL CHART</h3>
+        <div class="row">
+            <div class="leftcolumn">
+                Normalised Stacked area chart (probably still look at inequality here so probably just do income brackets again)
+
+                The proportion of carbon emissions from high income countries is decreasing. But its more just increasing in the upper middle class instead...
+            </div>
+
+            <div class="rightcolumn">
+                <div id="stackedareachart"></div>
+            </div>
+        </div>
     </section>
 
     <section id="rowdivider"></section>
 
     <section id="main3">
-        <h1 class="heading">Is It Too Late? What Can We Do?</h1>
+        <h1 class="heading">Some Heading Here</h1>
+        <h3 class="subheading">SOME SUBHEADING HERE</h3>
         <div class="row">
             <div class="leftcolumn">
-            Concluding section. Firstly identify where the problem is driven the most.
-
-            The unfortunate reality is that climate change is going to affect everyone.
-            
-            Consequences
+                For your interest: Try looking up your continent/region and seeing the major types of carbon emissions. 
+                Click the legend to highlight any particular type. 
             </div>
-
             <div class="rightcolumn">
-            https://vega.github.io/vega-lite/examples/interactive_legend.html
-            this one could be a good example for one for differentiating coal, gas, co2
-            which i think is all in the dataset
+                A bit of analysis: Coal and oil are the predominant types in most of the world. 
+                Some outliers: Europe has a huge dependence on gas.
+                China and India are significantly more on cement because of industries.
             </div>
         </div>
 
-        <h3 class="subheading">FOSSIL FUELS</h3>
+        <div id="areachart"></div>
+
+        <br />
+        <br />
+
+        <h3 class="subheading">WHAT CAN YOU DO?</h3>
         <div class="row">
             <div class="leftcolumn">
-            Color guide e.g. <span style="color: rosybrown">Coal</span>, <span style="color: grey">Gas</span>, <span style="color: darkred">CO2</span>
-            </div>
+                The unfortunate reality is that as an individual, you really can't do that much...
 
-            <div class="rightcolumn">
-            We've known the science for so long. The cause is fossil fuels. But rich countries are not willing to adapt
-            e.g. see this chart that shows rich countries are still producing massive amounts of fossil fuels and not slowing down
-            </div>
-        </div>
-
-        <div id="groupedbarchart"></div>
-
-        <h3 class="subheading">FINAL WORDS</h3>
-        <div class="row">
-            <div class="leftcolumn">
                 The most important thing about the fight against climate change is being knowledgeable about the science around it.
                 Research yourself. Share with those you know. Then potentially go out and try to help yourself by contributing to local community politics.
                 Blah blah climate town stuff.
             </div>
 
             <div class="rightcolumn">
-                Lorem ipsum
+                But its not all doom and gloom... 
+
+                Recent commitments for things such as net zero by 2050 are encouraging steps forward
+                And with the recent increase in devastating natural disasters
+                Hopefully leaders across the world start taking action
             </div>
         </div>
-
+    
     </section>
 
     <section id="footer">
         <div>
             <br />
+            Many thanks to Our World in Data for the <a href="https://ourworldindata.org/co2-dataset-sources">dataset</a>
+            <br />
             Created by Andrew Ting (30617634) for FIT3179 Assignment 2
-            <br />
-            Many thanks to Our World in Data for the data <a href="https://ourworldindata.org/co2-dataset-sources">(source)</a>
-            <br />
-            and probably more stuff in the footer here
             <br />
             <br />
         </div>

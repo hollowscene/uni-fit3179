@@ -28,7 +28,7 @@
   }, {
     "filter": "datum.year == Select_Year"
   }, {
-    "fold": ["coal_co2", "gas_co2", "oil_co2", "cement_co2", "flaring_co2", "other_co2"],
+    "fold": ["coal_co2", "gas_co2", "oil_co2", "cement_co2", "flaring_co2"],
     "as": ["key", "co2_amount"]
    }],
 

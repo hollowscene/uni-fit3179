@@ -22,12 +22,8 @@ section#title {
     text-align: left;
 }
 
-section#main1 {
-    background-color: white;
-}
-
-section#main2 {
-    background-color: white;
+section#main3 {
+    padding-bottom: 48px;
 }
 
 section#rowdivider {
@@ -94,9 +90,21 @@ div#carbonmap {
 }
 
 div#topkchart {
-    width: 960px;
+    width: 480px;
 }
 
 div#groupedbarchart {
     width: 960px;
+}
+
+div#radialchart {
+    width: 480px;
+}
+
+div#areachart {
+    width: 960px;
+}
+
+div#stackedareachart {
+    width: 480px;
 }

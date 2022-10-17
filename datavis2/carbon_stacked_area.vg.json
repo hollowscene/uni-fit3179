@@ -1,0 +1,51 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container", 
+    "height": 200,
+    "data": {"url": "data/owid-co2-data.csv"},
+    "mark": {
+        "type": "area",
+        "tooltip": true
+    },
+
+    "transform": [{
+      "filter": {
+        "field": "country", 
+        "oneOf": ["Low-income countries", "Lower-middle-income countries", "Upper-middle-income countries", "High-income countries"]
+      }
+    }, {
+        "filter": {"field": "year", "range": [{"year": 1900}, {"year": 2020}]}
+    }],
+
+    "params": [{
+      "name": "key_param",
+      "select": {"type": "point", "fields": ["key"]},
+      "bind": "legend"
+    }],
+
+    "encoding": {
+      "x": {
+        "timeUnit": "year", "field": "year",
+        "axis": {"domain": false, "format": "%Y", "tickSize": 0, "title": null}
+      },
+      "y": {
+        "aggregate": "sum", 
+        "field": "share_global_co2",
+        "stack": "normalize",
+        "axis": {"title": null}
+      },
+      "color": {
+        "field": "country",
+        "scale": {"range": ["#4c78a8", "#f58518", "#e45756", "#72b7b2"]},
+        "legend": {
+          "labelExpr": "datum.label == 'Low-income countries' ? 'Low' : datum.label == 'Lower-middle-income countries' ? 'Lower-middle' : datum.label == 'Upper-middle-income countries' ? 'Upper-middle': datum.label == 'High-income countries' ? 'High' : 'Unknown'"
+        },
+        "title": ["Country Income", "Groupings"]
+      },
+      "opacity": {
+        "condition": {"param": "key_param", "value": 1},
+        "value": 0.2
+      }
+    }
+  }
+  

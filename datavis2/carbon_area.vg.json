@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container", 
+    "height": 300,
+    "data": {"url": "data/owid-co2-data.csv"},
+    "mark": {
+        "type": "area",
+        "tooltip": true
+    },
+
+    "transform": [{
+        "filter": "datum.country == Select_Region"
+    }, {
+        "filter": {"field": "year", "range": [{"year": 1900}, {"year": 2020}]}
+    }, {
+        "fold": ["coal_co2", "oil_co2", "gas_co2", "cement_co2", "flaring_co2"],
+        "as": ["key", "co2"]
+    }],
+
+    "params": [{
+      "name": "key_param",
+      "select": {"type": "point", "fields": ["key"]},
+      "bind": "legend"
+    }, {
+        "name": "Select_Region",
+        "value": "Europe",
+        "bind": {
+            "input": "select",
+            "options": ["Africa", "Asia (excl. China & India)", "China", "India", "Europe (excl. EU-28)", "European Union (28)", "North America", "Oceania", "South America"],
+            "name": "Region: "
+        }
+    }],
+
+    "encoding": {
+      "x": {
+        "timeUnit": "year", "field": "year",
+        "axis": {"domain": false, "format": "%Y", "tickSize": 0, "title": null}
+      },
+      "y": {
+        "aggregate": "sum", 
+        "field": "co2",
+        "stack": "false"
+      },
+      "color": {
+        "field": "key",
+        "scale": {"range": ["#9c9ede", "#cedb9c", "#de9ed6", "#e7cb94", "#c6dbef"]},
+        "legend": {
+            "labelExpr": "datum.label == 'coal_co2' ? 'Coal' : datum.label == 'oil_co2' ? 'Oil' : datum.label == 'gas_co2' ? 'Gas': datum.label == 'cement_co2' ? 'Cement' : datum.label == 'flaring_co2' ? 'Flaring' : 'Unknown'"
+        },
+        "title": "Type"
+      },
+      "opacity": {
+        "condition": {"param": "key_param", "value": 1},
+        "value": 0.2
+      }
+    }
+  }
+  
