@@ -81,38 +81,41 @@
           {"field": "population", "type": "quantitative", "title": "Population", "format": ","},
           {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".2f"}
         ]
-      },
-      "layer": [
-        {"mark": {"type": "circle", "opacity": 1, "size": 15}},
-        {
-          "transform": [
-            {
-              "window": [{"op": "rank", "as": "ranking"}],
-              "sort": [{"field": "co2_per_capita", "order": "descending"}]
-            },
-            {"filter": "datum.ranking == 1"},
-            {
-              "calculate": "'The worst emitting country; of the selected year: ' + datum['co2_per_capita']",
-              "as": "text_annotation_raw"
-            },
-            {
-              "calculate": "split(datum.text_annotation_raw, ';')",
-              "as": "text_annotation"
-            }
-          ],
-          "mark": {
-            "type": "text",
-            "align": "right",
-            "dx": -8,
-            "dy": -8,
-            "baseline": "middle",
-            "fontStyle": "italic"
+      }
+    }, {
+      "layer": [{
+        "mark": {"type": "circle", "opacity": 1, "size": 15}
+      }, {
+        "transform": [
+          {
+            "window": [{"op": "rank", "as": "ranking"}],
+            "sort": [{"field": "co2_per_capita", "order": "descending"}]
           },
-          "encoding": {"text": {"field": "text_annotation"}}
+          {"filter": "datum.ranking == 1"},
+          {
+            "calculate": "'Worst per capita emitter:;' + datum['country'] + ' (' + datum['co2_per_capita'] + ')'",
+            "as": "text_annotation_raw"
+          },
+          {
+            "calculate": "split(datum.text_annotation_raw, ';')",
+            "as": "text_annotation"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "dx": -8,
+          "dy": -8,
+          "baseline": "middle",
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"field": "text_annotation"},
+          "longitude": {"field": "Longitude_(average)", "type": "quantitative"},
+          "latitude": {"field": "Latitude_(average)", "type": "quantitative"}
         }
-      ]
-    },
-    {
+    }]
+  }, {
     "data": {
       "url": "data/world_map_countries_110scale_30graticules.topojson",
       "format": {"type": "topojson", "feature": "ne_50m_graticules_30"}

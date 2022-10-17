@@ -58,13 +58,13 @@
       "value": 0.2
     },
     "tooltip": [{
-      "field": "year", "type": "temporal", "timeUnit": "year", "title": "year"
+      "field": "year", "type": "temporal", "timeUnit": "year", "title": "Year"
     }, {
-      "field": "key_nice", "type": "nominal", "title": "co2 type"
+      "field": "key_nice", "type": "nominal", "title": "CO2 Type"
     }, {
-      "field": "co2", "type": "quantitative", "title": "total co2", "format": ","
+      "field": "co2", "type": "quantitative", "title": "Total CO2", "format": ","
     }, {
-      "field": "country", "type": "nominal", "title": "region"
+      "field": "country", "type": "nominal", "title": "Region"
     }]
   }
 }
