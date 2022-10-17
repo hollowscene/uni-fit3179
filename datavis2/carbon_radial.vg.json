@@ -1,31 +1,31 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "A simple radial chart with embedded data.",
-    "height": 300,
-    "width": "container",
-    "data": {
-      "values": [9.776, 6.22, 1.75, 0.236]
-    },
-    "layer": [{
-      "mark": {"type": "arc", "innerRadius": 30, "stroke": "#fff", "tooltip": true},
-      "encoding": {
-        "detail": {"field": "country"}
-      }
-    },{
-      "mark": {"type": "text", "radiusOffset": 16},
-      "encoding": {
-        "text": {"field": "data", "type": "quantitative"}
-      }
-    }],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple radial chart with embedded data.",
+  "height": 300,
+  "width": "container",
+  "data": {
+    "values": [9.776, 6.22, 1.75, 0.236]
+  },
+  "layer": [{
+    "mark": {"type": "arc", "innerRadius": 30, "stroke": "#fff", "tooltip": true},
     "encoding": {
-      "theta": {"field": "data", "type": "quantitative", "stack": true},
-      "radius": {"field": "data", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
-      "color": {"field": "data", "type": "nominal", "legend": true}
-    },
-    "config": {
-        "view": {
-           "stroke": "transparent"
-        }
-      }
+      "detail": {"field": "country"}
+    }
+  },{
+    "mark": {"type": "text", "radiusOffset": 16},
+    "encoding": {
+      "text": {"field": "data", "type": "quantitative"}
+    }
+  }],
+  "encoding": {
+    "theta": {"field": "data", "type": "quantitative", "stack": true},
+    "radius": {"field": "data", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+    "color": {"field": "data", "type": "nominal", "legend": true}
+  },
+  "config": {
+    "view": {
+        "stroke": "transparent"
+    }
   }
+}
   

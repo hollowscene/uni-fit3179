@@ -68,6 +68,6 @@
   }],
   
   "config": {
-    "legend": {"orient": "top", "layout": {"bottom": {"anchor": "left"}}}
+    "background": "white"
   }
 }

@@ -20,16 +20,16 @@
         "type": "temporal", 
         "timeUnit": "year", 
         "scale": {"domain": [1750, 2020]},
-        "title": "year"
+        "title": "Year"
       },
       "y": {
         "field": "co2", 
         "type": "quantitative", 
-        "title": "co2",
+        "title": "CO2 (million Tonnes)",
         "format": ","
       },
-      "detail": {"field": "country", "type": "nominal"},
-      "color": {"field": "country", "type": "nominal", "legend": null}
+      "detail": {"field": "country", "type": "nominal", "title": "Continent"},
+      "color": {"field": "country", "type": "nominal", "legend": null, "title": "Continent"}
     },
     "layer": [{
       "description": "transparent layer to make it easier to trigger selection",

@@ -5,6 +5,8 @@
 
     "data": {"url": "data/owid-co2-data.csv"},
     "transform": [{
+        "calculate": "toNumber(datum.co2)", "as": "co2"
+    }, {
         "filter": {
           "field": "country", 
           "oneOf": ["Low-income countries", "Lower-middle-income countries", "Upper-middle-income countries", "High-income countries"]
@@ -17,7 +19,7 @@
     "encoding": {
         "theta": {"field": "co2", "type": "quantitative", "stack": true},
         "radius": {"field": "co2", "scale": {"type": "sqrt", "zero": true, "rangeMin": 10}, "sort": "descending"},
-        "color": {"field": "country", "type": "nominal", "legend": true},
+        "color": {"field": "country", "type": "nominal"},
         "detail": {"field": "country", "type": "nominal"}
     }
 }
