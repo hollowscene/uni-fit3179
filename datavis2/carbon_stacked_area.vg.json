@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container", 
-    "height": 350,
+    "height": 250,
     "data": {"url": "data/owid-co2-data.csv"},
     "mark": {
         "type": "area",
@@ -14,9 +14,9 @@
         "oneOf": ["Low-income countries", "Lower-middle-income countries", "Upper-middle-income countries", "High-income countries"]
       }
     }, {
-      "filter": {"field": "year", "range": [{"year": 1900}, {"year": 2020}]}
+      "filter": {"field": "year", "range": [{"year": 1950}, {"year": 2020}]}
     }, {
-      "fold": ["share_global_co2", "share_global_coal_co2", "share_global_gas_co2", "share_global_oil_co2", "share_global_cement_co2", "share_global_flaring_co2", "share_global_other_co2"],
+      "fold": ["share_global_co2", "share_global_coal_co2", "share_global_gas_co2", "share_global_oil_co2", "share_global_cement_co2", "share_global_flaring_co2"],
       "as": ["key", "co2_share"]
     }, {
       "calculate": "{'share_global_co2': 'Combined', 'share_global_coal_co2': 'Coal', 'share_global_oil_co2': 'Oil', 'share_global_gas_co2': 'Gas', 'share_global_cement_co2': 'Cement', 'share_global_flaring_co2': 'Flaring', 'share_global_other_co2': 'Other'}[datum.key]", "as": "key_nice"
@@ -26,14 +26,13 @@
 
     "params": [{
       "name": "key_param",
-      "select": {"type": "point", "fields": ["country"]},
-      "bind": "legend"
+      "select": {"type": "point", "fields": ["country"]}
     }, {
       "name": "Select_Type",
       "value": "Combined",
       "bind": {
           "input": "select",
-          "options": ["Combined", "Coal", "Oil", "Gas", "Cement", "Flaring", "Other"],
+          "options": ["Combined", "Coal", "Oil", "Gas", "Cement", "Flaring"],
           "name": "Type: "
       }
     }],
@@ -41,21 +40,30 @@
     "encoding": {
       "x": {
         "timeUnit": "year", "field": "year",
-        "axis": {"domain": false, "format": "%Y", "tickSize": 0, "title": null}
+        "axis": {"domain": false, "format": "%Y", "tickSize": 0, "title": null},
+        "title": "Year"
       },
       "y": {
         "aggregate": "sum", 
         "field": "co2_share",
         "stack": "normalize",
-        "axis": {"title": null}
+        "axis": {"title": null},
+        "format": ".4f",
+        "title": "CO2 Share",
+        "sort": {"field": "country", "order": "descending"}
       },
       "color": {
         "field": "country",
-        "scale": {"range": ["#4c78a8", "#f58518", "#e45756", "#72b7b2"]},
+        "type": "ordinal",
+        "scale": {
+          "domain": ["High-income countries", "Upper-middle-income countries", "Lower-middle-income countries", "Low-income countries"], 
+          "range": ["#756bb1", "#9e9ac8", "#bcbddc", "#dadaeb"]
+        },
         "legend": {
           "labelExpr": "datum.label == 'Low-income countries' ? 'Low' : datum.label == 'Lower-middle-income countries' ? 'Lower-middle' : datum.label == 'Upper-middle-income countries' ? 'Upper-middle': datum.label == 'High-income countries' ? 'High' : 'Unknown'"
         },
-        "title": ["Country Income", "Groupings"]
+        "title": "Income Classification",
+        "sort": "descending"
       },
       "opacity": {
         "condition": {"param": "key_param", "value": 1},

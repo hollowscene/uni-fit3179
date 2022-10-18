@@ -108,3 +108,8 @@ div#areachart {
 div#stackedareachart {
     width: 480px;
 }
+
+/* OTHER */
+img {
+    width: 420px;
+}

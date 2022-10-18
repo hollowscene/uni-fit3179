@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "CO2 Emissions by Carbon Type",
   "width": "container", 
   "height": 300,
   "data": {"url": "data/owid-co2-data.csv"},

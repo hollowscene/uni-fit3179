@@ -29,7 +29,15 @@
         "format": ","
       },
       "detail": {"field": "country", "type": "nominal", "title": "Continent"},
-      "color": {"field": "country", "type": "nominal", "legend": null, "title": "Continent"}
+      "color": {
+        "field": "country", 
+        "type": "nominal", 
+        "legend": null, 
+        "title": "Continent",
+        "scale": {
+          "domain": ["World", "Asia", "North America", "Europe", "Africa", "South America", "Oceania"], 
+          "range": ["#b279a2", "#f58518", "#72b7b2", "#e45756", "#eeca3b", "#4c78a8", "#ff9da6"]}
+      }
     },
     "layer": [{
       "description": "transparent layer to make it easier to trigger selection",

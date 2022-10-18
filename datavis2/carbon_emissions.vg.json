@@ -63,6 +63,10 @@
         },
         {"filter": "datum.year == Select_Year"}
       ],
+      "params": [{
+        "name": "key_param2",
+        "select": {"type": "point", "fields": ["country"]}
+      }],
       "mark": {
         "type": "geoshape", "stroke": "lightsteelblue", "strokeWidth": 0.5
       },
@@ -74,13 +78,18 @@
           "scale": {
             "domain": [0, 2.5, 7.5, 15, 25],
             "range": ["#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
-          }
+          },
+          "title": "CO2 per capita"
         },
         "tooltip": [
           {"field": "country", "type": "nominal", "title": "Country"},
-          {"field": "population", "type": "quantitative", "title": "Population", "format": ","},
-          {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".2f"}
-        ]
+          {"field": "population", "type": "quantitative", "title": "Population", "format": ".2s"},
+          {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".4f"}
+        ],
+        "opacity": {
+          "condition": {"param": "key_param2", "value": 1},
+          "value": 0.2
+        }
       }
     },
     {

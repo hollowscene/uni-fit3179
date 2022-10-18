@@ -1,31 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A simple radial chart with embedded data.",
+  "description": "Manually calculated mean carbon emissions per capita of each income group (2020)",
   "height": 300,
   "width": "container",
   "data": {
-    "values": [9.776, 6.22, 1.75, 0.236]
+      "values": [
+        {"category": "Low", "Mean Carbon Emissions per capita (Tonnes)": 0.236},
+        {"category": "Lower-middle", "Mean Carbon Emissions per capita (Tonnes)": 1.75},
+        {"category": "Upper-middle", "Mean Carbon Emissions per capita (Tonnes)": 6.22},
+        {"category": "High", "Mean Carbon Emissions per capita (Tonnes)": 9.776}
+      ]
   },
+
+
   "layer": [{
-    "mark": {"type": "arc", "innerRadius": 30, "stroke": "#fff", "tooltip": true},
-    "encoding": {
-      "detail": {"field": "country"}
-    }
-  },{
+    "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff", "tooltip": true},
+    "params": [{
+      "name": "key_param",
+      "select": {"type": "point", "fields": ["category"]}
+    }]
+  }, {
     "mark": {"type": "text", "radiusOffset": 16},
     "encoding": {
-      "text": {"field": "data", "type": "quantitative"}
-    }
+      "text": {"field": "Mean Carbon Emissions per capita (Tonnes)", "type": "quantitative"}    }
   }],
   "encoding": {
-    "theta": {"field": "data", "type": "quantitative", "stack": true},
-    "radius": {"field": "data", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
-    "color": {"field": "data", "type": "nominal", "legend": true}
-  },
-  "config": {
-    "view": {
-        "stroke": "transparent"
+    "theta": {"field": "Mean Carbon Emissions per capita (Tonnes)", "type": "quantitative", "stack": true},
+    "radius": {"field": "Mean Carbon Emissions per capita (Tonnes)", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+    "color": {
+      "field": "category", 
+      "type": "ordinal", 
+      "scale": {
+        "domain": ["High", "Upper-middle", "Lower-middle", "Low"], 
+        "range": ["#756bb1", "#9e9ac8", "#bcbddc", "#dadaeb"]
+      },
+      "title": "Income Classification"
+    },
+    "opacity": {
+      "condition": {"param": "key_param", "value": 1},
+      "value": 0.2
     }
-  }
+  },
+
+  "config": {
+      "view": {
+          "stroke": "transparent"
+      }
+    }
 }
-  
