@@ -1,35 +1,42 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "CO2 Emissions by Country",
+  "title": "CO2 Emissions by Continent",
   "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
   "width": "container",
   "height": 400,
-  "params": [
-    {
-      "name": "Select_Country",
-      "value": "World",
-      "bind": {
-        "input": "select",
-        "options": ["World", "Africa", "Asia", "Europe", "North America", "Oceania", "South America"],
-        "name": "Country/Region: "
-      }
+
+  "data": {"url": "data/owid-co2-data.csv"},
+  "transform": [{    
+    "filter": {
+      "field": "country", 
+      "oneOf": ["World", "Africa", "Asia", "Europe", "North America", "Oceania", "South America"]
     }
-  ],
+  }],
+
   "layer": [{
-    "data": {"url": "data/owid-co2-data.csv"},
-    "transform": [{"filter": "datum.country==Select_Country"}],
     "encoding": {
       "x": {
         "field": "year", 
         "type": "temporal", 
         "timeUnit": "year", 
         "scale": {"domain": [1750, 2020]},
-        "title": "year"
+        "title": "Year"
       },
       "y": {
         "field": "co2", 
         "type": "quantitative", 
-        "title": "co2"
+        "title": "CO2 (million Tonnes)",
+        "format": ","
+      },
+      "detail": {"field": "country", "type": "nominal", "title": "Continent"},
+      "color": {
+        "field": "country", 
+        "type": "nominal", 
+        "legend": null, 
+        "title": "Continent",
+        "scale": {
+          "domain": ["World", "Asia", "North America", "Europe", "Africa", "South America", "Oceania"], 
+          "range": ["#b279a2", "#f58518", "#72b7b2", "#e45756", "#eeca3b", "#4c78a8", "#ff9da6"]}
       }
     },
     "layer": [{
@@ -55,6 +62,21 @@
       },
       "layer": [{
         "mark": {"type": "circle"}
+      }, {
+        "mark": {"type": "text", "align": "left", "dx": 4},
+        "encoding": {
+          "text": {
+            "field": "country", 
+            "type": "nominal",
+            "condition": [{
+              "test": "datum.country == 'Oceania' || datum.country == 'Africa' || datum.country == 'South America'", 
+              "value": ""
+            }, {
+              "test": "datum.country == 'North America'", 
+              "value": "N. America"
+            }
+          ]}
+        }
       }]
     }, {
       "description": "point tooltip",
@@ -63,7 +85,7 @@
         "value": [{"symbol": "country"}],
         "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
       }],
-      "mark": {"type": "circle", "tooltip": true},
+      "mark": {"type": "circle", "tooltip": true}, 
       "encoding": {
         "opacity": {
           "condition": {"test": {"param": "hover", "empty": false}, "value": 1},
@@ -92,7 +114,7 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -22,
+        "dx": -18,
         "dy": -190,
         "x": "width",
         "text": ["2016: Paris Agreement", "goes into effect"]
@@ -115,7 +137,7 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -60,
+        "dx": -52,
         "dy": -152,
         "x": "width",
         "text": ["2005: Kyoto Protocol", "goes into effect"]
@@ -138,7 +160,7 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -240,
+        "dx": -224,
         "dy": -190,
         "x": "width",
         "text": ["1947: Third industrial", "revolution - Huge", "technological advances"]
@@ -161,7 +183,7 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -482,
+        "dx": -454,
         "dy": -190,
         "x": "width",
         "text": ["1870: Second", "industrial revolution - ", "Rapid scientific discovery"]
@@ -184,7 +206,7 @@
         "type": "text",
         "align": "left",
         "baseline": "top",
-        "dx": -810,
+        "dx": -760,
         "dy": -190,
         "x": "width",
         "text": ["1760: First industrial", " revolution - The introduction", "of machine manufacturing"]

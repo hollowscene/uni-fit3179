@@ -3,31 +3,39 @@
   "description": "Waterfall chart",
   "width": 900,
   "height": 450,
-  "padding": 5,
+
   "data": {"url": "data/owid-co2-data.csv"},
+
+  "transform": [{
+    "filter": "datum.country == 'World'"
+  }],
+
   "encoding": {
     "x": {
       "field": "year",
-      "type": "nominal"
+      "type": "ordinal",
+      "bin": {"step": 10}
     },
     "y": {
-      "aggregate": "sum",
       "field": "co2_growth_abs",
       "type": "quantitative",
       "axis": {
-        "title": "",
         "grid": false
       }
-    }
+    },
+    "detail": {"field": "country"}
   },
-  "transform": [{
-    "calculate": "datum.year == '2020' ? 'total' : co2_growth_abs > 0 ? 'increase' : co2_growth_abs <= 0 ? 'decrease'", 
-    "as": "cat"
-  }],
   "layer": [{
-    "mark": "bar",
+    "mark": {"type": "bar", "tooltip": true},
     "encoding": {
       "color": {
+        "condition": [{
+          "test": "datum['co2_growth_abs'] < 0", 
+          "value": "red"
+        }, {
+          "test": "datum['co2_growth_abs'] >= 0", 
+          "value": "green"
+        }],
         "field": "cat",
         "type": "ordinal",
         "legend": {"title": ""},
@@ -36,24 +44,8 @@
           "range": ["#4FC3F7","#B2FF59","#FF5252"]
         }
       }
-    }}, 
-    {"mark": "text",
-      "encoding": {
-        "y": {
-          "field": "co2", 
-          "type": "quantitative"          
-        },       
-        "text": {
-          "condition": {"test": "datum['cat'] == 'total'", "field": "co2"},
-          "field": "co2_growth_abs", "type": "nominal"
-        },
-        "color": {
-          "condition": {"test": "datum['cat'] != 'increase'", "value": "white"},
-          "value": "#1B5E20"
-        }
-      }
     }
-  ],
+  }],
   "config": {
     "text": {
       "baseline": "bottom",

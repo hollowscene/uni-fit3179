@@ -1,12 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top 10 worst emitting countries (per capita)",
 
   "width": "container",
-  "height": 400,
+  "height": 270,
   "data": {"url": "data/owid-co2-data.csv"},
   "transform": [{
     "filter": "datum.year == Select_Year & datum.iso_code != ''"
+  }, {
+    "calculate": "toNumber(datum.co2_per_capita)", "as": "co2_per_capita"
+  }, {
+    "window": [{
+      "op": "rank",
+      "as": "rank"
+    }],
+    "groupby": ["year"],
+    "sort": [{ "field": "co2_per_capita", "order": "descending" }]
+  }, {
+    "filter": "datum.rank <= 10"
   }],
 
   "params": [
@@ -20,36 +30,56 @@
         "step": 1,
         "name": "Year: "
       }
+    }, {
+      "name": "key_param",
+      "select": {"type": "point", "fields": ["country"]}
     }
   ],
 
   "layer": [{
-    "transform": [
-      {
-        "window": [{
-          "op": "rank",
-          "as": "rank"
-        }],
-        "sort": [{ "field": "co2_per_capita", "order": "descending" }]
-      }, {
-        "filter": "datum.rank <= 10"
+    "mark": {"type": "bar", "tooltip": true},
+    "transform": [{
+      "lookup": "country", 
+      "from": {
+        "data": {"url": "data/continents-according-to-our-world-in-data.csv"},
+        "key": "Entity",
+        "fields":  ["Year", "Continent"]
       }
-    ],
-    "mark": "bar",
+    }],
     "encoding": {
+      "detail": [{
+        "field": "rank", "type": "ordinal", "title": "Rank"
+      }, {
+        "field": "year", "type": "ordinal", "title": "Year"
+      }],
       "x": {
           "field": "co2_per_capita",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "CO2 per capita (Tonnes)"
       },
       "y": {
           "field": "country",
           "type": "nominal",
-          "sort": {"field": "co2_per_capita", "op": "sum", "order": "descending"}
+          "sort": {"field": "co2_per_capita", "order": "descending"},
+          "title": ""
+      },
+      "color": {
+        "field": "Continent", 
+        "type": "nominal", 
+        "scale": {
+          "domain": ["Africa", "Asia", "Europe", "North America", "Oceania", "South America"], 
+          "range": ["#eeca3b", "#f58518", "#e45756", "#72b7b2", "#ff9da6", "#4c78a8"]
+        },
+        "title": ["Continent"]
+      },
+      "opacity": {
+        "condition": {"param": "key_param", "value": 1},
+        "value": 0.2
       }
     }
   }],
   
   "config": {
-    "background": "white"
+    "legend": {"orient": "top", "columns": 3}
   }
 }

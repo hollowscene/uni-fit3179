@@ -1,9 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Worldwide CO2 Emissions (2020)",
+  "title": "Global CO2 Per Capita Emissions",
+
   "width": "container",
   "height": 400,
   "projection": {"type": "equalEarth"},
+
   "params": [
     {
       "name": "Select_Year",
@@ -15,16 +17,13 @@
         "step": 1,
         "name": "Year: "
       }
-    }, {
-      "name": "Select_Field",
-      "value": "co2_per_capita",
-      "bind": {
-        "input": "select",
-        "options": ["co2", "co2_per_capita", "co2_per_gdp", "co2_per_unit_energy"],
-        "name": "Normalisation: "
-      }
     }
   ],
+
+  "data": {
+    "url": "data/owid-co2-data.csv"
+  },
+
   "layer": [
     {
       "data": {"sphere": true},
@@ -50,9 +49,6 @@
       "encoding": {"tooltip": {"field": "note"}}
     },
     {
-      "data": {
-        "url": "data/owid-co2-data.csv"
-      },
       "transform": [
         {
           "lookup": "iso_code",
@@ -67,6 +63,10 @@
         },
         {"filter": "datum.year == Select_Year"}
       ],
+      "params": [{
+        "name": "key_param2",
+        "select": {"type": "point", "fields": ["country"]}
+      }],
       "mark": {
         "type": "geoshape", "stroke": "lightsteelblue", "strokeWidth": 0.5
       },
@@ -78,13 +78,18 @@
           "scale": {
             "domain": [0, 2.5, 7.5, 15, 25],
             "range": ["#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
-          }
+          },
+          "title": "CO2 per capita"
         },
         "tooltip": [
           {"field": "country", "type": "nominal", "title": "Country"},
-          {"field": "population", "type": "quantitative", "title": "Population"},
-          {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".2f"}
-        ]
+          {"field": "population", "type": "quantitative", "title": "Population", "format": ".2s"},
+          {"field": "co2_per_capita", "type": "quantitative", "title": "CO2 per capita (Tonnes)", "format": ".4f"}
+        ],
+        "opacity": {
+          "condition": {"param": "key_param2", "value": 1},
+          "value": 0.2
+        }
       }
     },
     {

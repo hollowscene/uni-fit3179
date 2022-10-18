@@ -1,21 +1,17 @@
 body {
-    margin-left: 520px;
-    margin-right: 520px;
     background-color: aliceblue;
-    padding-top: 32px;
-    padding-bottom: 64px;
+    padding: 32px 40px 64px 40px;
 }
 
 /* SECTIONS */
 section {
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
     color: black;
     font-family: 'Heebo', sans-serif;
     font-size: 1.05em;
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 32px 40px 32px 40px;
     width: 960px;
     text-align: left;
 }
@@ -26,12 +22,8 @@ section#title {
     text-align: left;
 }
 
-section#main1 {
-    background-color: white;
-}
-
-section#main2 {
-    background-color: white;
+section#main3 {
+    padding-bottom: 48px;
 }
 
 section#rowdivider {
@@ -98,9 +90,26 @@ div#carbonmap {
 }
 
 div#topkchart {
-    width: 960px;
+    width: 480px;
 }
 
 div#groupedbarchart {
     width: 960px;
+}
+
+div#radialchart {
+    width: 480px;
+}
+
+div#areachart {
+    width: 960px;
+}
+
+div#stackedareachart {
+    width: 480px;
+}
+
+/* OTHER */
+img {
+    width: 420px;
 }
